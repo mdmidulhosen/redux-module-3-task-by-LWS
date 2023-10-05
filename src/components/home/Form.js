@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { added } from "../../redux/product-add/Actions";
 
 function Form() {
@@ -10,6 +10,9 @@ function Form() {
   const [quantity, setQuantity] = useState();
 
   const dispatch = useDispatch();
+
+  const data = useSelector((state) => state)
+  console.log(data)
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -32,7 +35,7 @@ function Form() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(added(name, image, category, price, quantity));
+    dispatch(added(1, name, image, category, price, quantity));
   };
   return (
     <div>

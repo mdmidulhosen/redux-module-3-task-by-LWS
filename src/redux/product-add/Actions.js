@@ -1,9 +1,10 @@
-import { ADDED } from "./ActionTypes";
+import { ADDED, ADDTOCART } from "./ActionTypes";
 
-export const added = (name, image, category, price, quantity) => {
+export const added = (id, name, image, category, price, quantity) => {
   return {
     type: ADDED,
     payload: {
+      id,
       name,
       image,
       category,
@@ -12,3 +13,10 @@ export const added = (name, image, category, price, quantity) => {
     },
   };
 };
+
+export const addToCart = (id) => {
+  return{
+    type: ADDTOCART,
+    payload: id
+  }
+}

@@ -1,10 +1,16 @@
 import React from "react";
 import Navbar from "./Navbar";
 import Form from "./Form";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../../redux/product-add/Actions";
 
 function Body() {
   const productData = useSelector((state) => state.productReducer);
+  const dispatch = useDispatch()
+
+  const handleQuantity = (id) => {
+    dispatch(addToCart(id))
+  }
   return (
     <body>
       <Navbar />
@@ -30,7 +36,7 @@ function Body() {
                       QTY <span className="lws-quantity">{data.quantity}</span>
                     </p>
                   </div>
-                  <button className="lws-btnAddToCart">Add To Cart</button>
+                  <button className="lws-btnAddToCart" onClick={() => handleQuantity(data.id)}>Add To Cart</button>
                 </div>
               </div>
             ))}
